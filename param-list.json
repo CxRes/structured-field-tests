@@ -18,6 +18,22 @@
         ]
     },
     {
+        "name": "single item parameterised list with bare array of items",
+        "raw": ["text/html;array=(\"foo\" bar;q=0.7)"],
+        "header_type": "list",
+        "expected": [
+            [{"__type": "token", "value": "text/html"}, [["array", [["foo",[]], [{"__type": "token", "value": "bar"},[["q", 0.7]]]]]]]
+        ]
+    },
+    {
+        "name": "single item nested parameterised list",
+        "raw": ["\"foo\";array=(\"bar\";array=(\"baz\"))"],
+        "header_type": "list",
+        "expected": [
+            ["foo", [["array", [["bar",[["array", [["baz", []]]]]]]]]]
+        ]
+    },
+    {
         "name": "missing parameter value parameterised list",
         "raw": ["text/html;a;q=1.0"],
         "header_type": "list",
